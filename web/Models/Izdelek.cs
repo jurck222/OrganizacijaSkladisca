@@ -13,6 +13,6 @@ namespace web.Models
         public string Name { get; set; }
         public int Sifra { get; set; }
         public int Kolicina { get; set; }
-        public ICollection<Skladisce> Skladisca { get; set; }
+        public ICollection<Skladisce>? Skladisca { get; set; }
     }
 }
