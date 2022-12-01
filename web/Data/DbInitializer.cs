@@ -8,33 +8,33 @@ namespace web.Data
 {
     public class DbInitializer
     {
-       public static void Initialize(SkladisceContext context)
+        public static void Initialize(WarehouseContext context)
         {
             context.Database.EnsureCreated();
-
-            // Look for any students.
-            if (context.Izdelki.Any())
+            // Look for any articles.
+            if (!context.Articles.Any())
             {
-                return;   // DB has been seeded
+                var articles = new Article[]
+                {
+                    new Article{Code=1237,Description="Plošča",Quantity=5},
+                    new Article{Code=174,Description="Paleta",Quantity=5},
+                    new Article{Code=695,Description="Škatla",Quantity=5}
+                };
+
+                context.Articles.AddRange(articles);
+                context.SaveChanges();
             }
 
-            var izdelki = new Izdelek[]
+            // Look for any warehouses.
+            if (!context.Warehouses.Any())
             {
-                new Izdelek{Name="Plosca",Sifra=12345,Kolicina=5}
-            };
-
-            context.Izdelki.AddRange(izdelki);
-            context.SaveChanges();
-
-            
-
-            var skladisca = new Skladisce[]
-            {
-                new Skladisce{StudentID=0,Cona=Cona.A,Zasedeno=false}
-            };
-
-            context.Skladisca.AddRange(skladisca);
-            context.SaveChanges();
+                var warehouses = new Warehouse[]
+                {
+                    new Warehouse{WarehouseCode="Skladisce 1",Zone=Zone.A,Full=false}
+                };
+                context.Warehouses.AddRange(warehouses);
+                context.SaveChanges();
+            }
         }
-    } 
+    }
 }
