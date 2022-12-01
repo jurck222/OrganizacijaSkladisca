@@ -1,4 +1,4 @@
--- Create a new database called 'Skladisce'
+-- Create a new database called 'Warehouse'
 -- Connect to the 'master' database to run this snippet
 USE master
 GO
@@ -6,7 +6,7 @@ GO
 IF NOT EXISTS (
     SELECT name
         FROM sys.databases
-        WHERE name = N'Skladisce'
+        WHERE name = N'Warehouse'
 )
-CREATE DATABASE Skladisce
+CREATE DATABASE Warehouse
 GO
