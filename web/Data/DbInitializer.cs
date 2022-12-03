@@ -12,6 +12,7 @@ namespace web.Data
         {
             context.Database.EnsureCreated();
             // Look for any articles.
+            
             if (!context.Articles.Any())
             {
                 var articles = new Article[]
@@ -24,6 +25,10 @@ namespace web.Data
                 context.Articles.AddRange(articles);
                 context.SaveChanges();
             }
+            if(!context.Roles.Any()){
+                
+            }
+
 
             // Look for any warehouses.
             if (!context.Warehouses.Any())

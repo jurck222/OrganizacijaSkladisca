@@ -41,6 +41,7 @@ namespace web.Controllers
         }
 
         // GET: Article/Create
+        [Authorize(Roles ="Admin,WarehouseLeader,Worker")]
         public IActionResult Create()
         {
             return View();
@@ -51,6 +52,7 @@ namespace web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles ="Admin,WarehouseLeader,Worker")]
         public async Task<IActionResult> Create([Bind("ArticleID,Code,Description,Quantity")] Article article)
         {
             if (ModelState.IsValid)
@@ -63,6 +65,7 @@ namespace web.Controllers
         }
 
         // GET: Article/Edit/5
+        [Authorize(Roles ="Admin,WarehouseLeader")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Articles == null)
@@ -83,6 +86,7 @@ namespace web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles ="Admin,WarehouseLeader")]
         public async Task<IActionResult> Edit(int id, [Bind("ArticleID,Code,Description,Quantity")] Article article)
         {
             if (id != article.ArticleID)
@@ -114,6 +118,7 @@ namespace web.Controllers
         }
 
         // GET: Article/Delete/5
+        [Authorize(Roles ="Admin,WarehouseLeader")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Articles == null)
@@ -130,7 +135,7 @@ namespace web.Controllers
 
             return View(article);
         }
-
+        [Authorize(Roles ="Admin,WarehouseLeader")]
         // POST: Article/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
