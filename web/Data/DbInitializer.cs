@@ -26,15 +26,21 @@ namespace web.Data
                 context.Articles.AddRange(articles);
                 context.SaveChanges();
             }
+            if (!context.Roles.Any())
+            {
             var roles = new IdentityRole[]{
                 new IdentityRole{Id="0",Name="Admin"},
                 new IdentityRole{Id="1", Name="WarehouseLeader"},
                 new IdentityRole{Id="2", Name="Worker"}
             };
+            
             foreach (IdentityRole r in roles)
             {
                 context.Roles.Add(r);
             }
+            
+            if (!context.Users.Any())
+            {
             var user = new ApplicationUser
             {
                 FirstName = "Admin",
@@ -75,6 +81,7 @@ namespace web.Data
                 context.Users.Add(user2);
                 
             }
+            
             context.SaveChanges();
             var UserRoles = new IdentityUserRole<string>[]
             {
@@ -87,6 +94,8 @@ namespace web.Data
             }
             context.SaveChanges();
             // Look for any warehouses.
+            }
+            }
             if (!context.Warehouses.Any())
             {
                 var warehouses = new Warehouse[]
