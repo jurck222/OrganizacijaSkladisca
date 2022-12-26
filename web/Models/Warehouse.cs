@@ -14,7 +14,6 @@ namespace web.Models
         public int WarehouseID { get; set; }
         public string WarehouseCode {get; set;}
         public Zone Zone { get; set; }
-        public Article? Article{get;set;}
         public bool Full {get;set;}
     }
 }
