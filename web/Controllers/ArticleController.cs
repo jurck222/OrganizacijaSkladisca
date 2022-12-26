@@ -3,11 +3,12 @@ using Microsoft.EntityFrameworkCore;
 using web.Data;
 using web.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Web.Mvc;
 
 namespace web.Controllers
 {
-    [Authorize]
-    public class ArticleController : Controller
+    [Microsoft.AspNetCore.Authorization.Authorize]
+    public class ArticleController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly WarehouseContext _context;
 
@@ -19,6 +20,7 @@ namespace web.Controllers
         // GET: Article
         public async Task<IActionResult> Index()
         {
+            
             return View(await _context.Articles.ToListAsync());
         }
 
@@ -41,7 +43,7 @@ namespace web.Controllers
         }
 
         // GET: Article/Create
-        [Authorize(Roles ="Admin,WarehouseLeader,Worker")]
+        [Microsoft.AspNetCore.Authorization.Authorize(Roles ="Admin,WarehouseLeader,Worker")]
         public IActionResult Create()
         {
             return View();
@@ -50,10 +52,10 @@ namespace web.Controllers
         // POST: Article/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles ="Admin,WarehouseLeader,Worker")]
-        public async Task<IActionResult> Create([Bind("ArticleID,Code,Description,Quantity")] Article article)
+        [Microsoft.AspNetCore.Mvc.HttpPost]
+        [Microsoft.AspNetCore.Mvc.ValidateAntiForgeryToken]
+        [Microsoft.AspNetCore.Authorization.Authorize(Roles ="Admin,WarehouseLeader,Worker")]
+        public async Task<IActionResult> Create([Microsoft.AspNetCore.Mvc.Bind("ArticleID,Code,Description,Quantity")] Article article)
         {
             if (ModelState.IsValid)
             {
@@ -61,11 +63,12 @@ namespace web.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            
             return View(article);
         }
 
         // GET: Article/Edit/5
-        [Authorize(Roles ="Admin,WarehouseLeader")]
+        [Microsoft.AspNetCore.Authorization.Authorize(Roles ="Admin,WarehouseLeader")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Articles == null)
@@ -84,10 +87,10 @@ namespace web.Controllers
         // POST: Article/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles ="Admin,WarehouseLeader")]
-        public async Task<IActionResult> Edit(int id, [Bind("ArticleID,Code,Description,Quantity")] Article article)
+        [Microsoft.AspNetCore.Mvc.HttpPost]
+        [Microsoft.AspNetCore.Mvc.ValidateAntiForgeryToken]
+        [Microsoft.AspNetCore.Authorization.Authorize(Roles ="Admin,WarehouseLeader")]
+        public async Task<IActionResult> Edit(int id, [Microsoft.AspNetCore.Mvc.Bind("ArticleID,Code,Description,Quantity")] Article article)
         {
             if (id != article.ArticleID)
             {
@@ -118,7 +121,7 @@ namespace web.Controllers
         }
 
         // GET: Article/Delete/5
-        [Authorize(Roles ="Admin,WarehouseLeader")]
+        [Microsoft.AspNetCore.Authorization.Authorize(Roles ="Admin,WarehouseLeader")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Articles == null)
@@ -135,10 +138,10 @@ namespace web.Controllers
 
             return View(article);
         }
-        [Authorize(Roles ="Admin,WarehouseLeader")]
+        [Microsoft.AspNetCore.Authorization.Authorize(Roles ="Admin,WarehouseLeader")]
         // POST: Article/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.ActionName("Delete")]
+        [Microsoft.AspNetCore.Mvc.ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Articles == null)

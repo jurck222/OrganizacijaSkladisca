@@ -11,6 +11,7 @@ namespace web.Controllers
     {
         private readonly WarehouseContext _context;
 
+
         public WarehousesController(WarehouseContext context)
         {
             _context = context;
