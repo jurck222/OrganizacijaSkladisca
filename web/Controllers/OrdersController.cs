@@ -1,12 +1,15 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using web.Data;
 using web.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace web.Controllers
 {
-    [Authorize]
     public class OrdersController : Controller
     {
         private readonly WarehouseContext _context;
@@ -19,7 +22,9 @@ namespace web.Controllers
         // GET: Orders
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Orders.ToListAsync());
+              return _context.Orders != null ? 
+                          View(await _context.Orders.ToListAsync()) :
+                          Problem("Entity set 'WarehouseContext.Orders'  is null.");
         }
 
         // GET: Orders/Details/5
@@ -51,7 +56,7 @@ namespace web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OrderID,Code,Quantity")] Order order)
+        public async Task<IActionResult> Create([Bind("OrderID,OrderCode,ArticleCode,Quantity,WarehouseName,WhouseZone")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +88,7 @@ namespace web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OrderID,Code,Quantity")] Order order)
+        public async Task<IActionResult> Edit(int id, [Bind("OrderID,OrderCode,ArticleCode,Quantity,WarehouseName,WhouseZone")] Order order)
         {
             if (id != order.OrderID)
             {
@@ -145,14 +150,14 @@ namespace web.Controllers
             {
                 _context.Orders.Remove(order);
             }
-
+            
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool OrderExists(int id)
         {
-            return _context.Orders.Any(e => e.OrderID == id);
+          return (_context.Orders?.Any(e => e.OrderID == id)).GetValueOrDefault();
         }
     }
 }
