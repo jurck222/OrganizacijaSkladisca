@@ -1,4 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using web.Data;
 using web.Models;
@@ -51,7 +56,7 @@ namespace web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OrderID,Code,Quantity")] Order order)
+        public async Task<IActionResult> Create([Bind("OrderID,Code,Quantity,Zone")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +88,7 @@ namespace web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OrderID,Code,Quantity")] Order order)
+        public async Task<IActionResult> Edit(int id, [Bind("OrderID,Code,Quantity,Zone")] Order order)
         {
             if (id != order.OrderID)
             {

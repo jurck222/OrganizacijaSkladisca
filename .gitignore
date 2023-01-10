@@ -1,0 +1,3 @@
+web/obj/*
+web/bin/
+.vscode
