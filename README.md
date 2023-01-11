@@ -11,4 +11,4 @@ Najina ideja za project je aplikacija za vodenje skladišča v proizvodnji. Apli
 ![whouse page](https://user-images.githubusercontent.com/56190152/211871505-28de32fc-598b-47d4-9dc9-f0d57144d09b.png)
 ![profile](https://user-images.githubusercontent.com/56190152/211871522-223ba7d1-e5b2-4a6b-a47d-e16632a9fa4a.png)
 **Jure Pavlovič naloge:**
-Generiranje osnovnega ogordja aplikacije in osnovne baze, ki je bila kasneje izboljšana. Objava aplikacije v azure in vključitev swagger.
+Generiranje osnovnega ogordja aplikacije in osnovne baze, ki je bila kasneje izboljšana. Objava aplikacije v azure in vključitev swagger. Dodajanje rolov in urejanje pravic ter dbinitializer.
