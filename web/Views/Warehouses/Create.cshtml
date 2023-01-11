@@ -19,8 +19,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Zone" class="control-label"></label>
-                <select asp-for="Zone" class="form-control"></select>
-                <span asp-validation-for="Zone" class="text-danger"></span>
+                @Html.DropDownListFor(model  => model.Zone, new SelectList(Enum.GetValues(typeof(Zone))))
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
