@@ -9,23 +9,29 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<form asp-controller="Orders" asp-action="Index" >
+    <p>
+        Order Code: <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.OrderCode)
+                Order Code
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ArticleCode)
+                Article Code
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Quantity)
+                Quantity
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.WarehouseName)
+                Warehouse Code
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.WhouseZone)
+                Warehouse Zone
             </th>
             <th></th>
         </tr>

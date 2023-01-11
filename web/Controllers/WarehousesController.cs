@@ -18,9 +18,23 @@ namespace web.Controllers
         }
 
         // GET: Warehouses
-        public async Task<IActionResult> Index()
+       public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Warehouses.ToListAsync());
+            if (_context.Warehouses == null)
+            {
+                return Problem("Entity set 'WarehouseContext.Warehouse'  is null.");
+
+            }
+
+            var warehouses = from w in _context.Warehouses
+                        select w;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                warehouses = warehouses.Where(s => s.WarehouseCode!.Contains(searchString));
+            }
+
+            return View(await warehouses.ToListAsync());
         }
 
         // GET: Warehouses/Details/5

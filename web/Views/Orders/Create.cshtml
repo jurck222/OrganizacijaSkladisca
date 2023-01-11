@@ -13,12 +13,12 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="OrderCode" class="control-label"></label>
+                <label asp-for="OrderCode" class="control-label">Order Code</label>
                 <input asp-for="OrderCode" class="form-control" />
                 <span asp-validation-for="OrderCode" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ArticleCode" class="control-label"></label>
+                <label asp-for="ArticleCode" class="control-label">Article Code</label>
                 <input asp-for="ArticleCode" class="form-control" />
                 <span asp-validation-for="ArticleCode" class="text-danger"></span>
             </div>
@@ -28,12 +28,12 @@
                 <span asp-validation-for="Quantity" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="WarehouseName" class="control-label"></label>
+                <label asp-for="WarehouseName" class="control-label">Warehouse Code</label>
                 <input asp-for="WarehouseName" class="form-control" />
                 <span asp-validation-for="WarehouseName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="WhouseZone" class="control-label"></label>
+                <label asp-for="WhouseZone" class="control-label">Warehouse Zone</label>
                 <input asp-for="WhouseZone" class="form-control" />
                 <span asp-validation-for="WhouseZone" class="text-danger"></span>
             </div>

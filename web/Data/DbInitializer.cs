@@ -20,6 +20,16 @@ namespace web.Data
                 {
                     new Article{Code=1237,Description="Plošča",Quantity=5},
                     new Article{Code=174,Description="Paleta",Quantity=5},
+                    new Article{Code=175,Description="Kabli",Quantity=1},
+                    new Article{Code=176,Description="Kosilnica",Quantity=1},
+                    new Article{Code=177,Description="Vijačnik",Quantity=4},
+                    new Article{Code=178,Description="Tablični računalnik",Quantity=17},
+                    new Article{Code=179,Description="Tipkovnica",Quantity=3},
+                    new Article{Code=180,Description="Telefon",Quantity=25},
+                    new Article{Code=181,Description="Žarometi",Quantity=2},
+                    new Article{Code=182,Description="Vrata",Quantity=1},
+                    new Article{Code=183,Description="Omara",Quantity=7},
+                    new Article{Code=184,Description="Stol",Quantity=2},
                     new Article{Code=695,Description="Škatla",Quantity=5}
                 };
 
@@ -100,7 +110,12 @@ namespace web.Data
             {
                 var warehouses = new Warehouse[]
                 {
-                    new Warehouse{WarehouseCode="Skladisce 1",Zone=Zone.A,Full=false}
+                    new Warehouse{WarehouseCode="Skladisce 1",Zone=Zone.A,Full=false},
+                    new Warehouse{WarehouseCode="Skladisce 2",Zone=Zone.B,Full=false},
+                    new Warehouse{WarehouseCode="Skladisce 3",Zone=Zone.A,Full=false},
+                    new Warehouse{WarehouseCode="Skladisce 4",Zone=Zone.B,Full=false},
+                    new Warehouse{WarehouseCode="Skladisce 5",Zone=Zone.A,Full=false},
+                    new Warehouse{WarehouseCode="Skladisce 6",Zone=Zone.C,Full=true}
                 };
                 context.Warehouses.AddRange(warehouses);
                 context.SaveChanges();

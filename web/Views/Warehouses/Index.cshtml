@@ -9,11 +9,17 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<form asp-controller="Warehouses" asp-action="Index" >
+    <p>
+        Warehouse Code: <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.WarehouseCode)
+                Warehouse Code
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Zone)
