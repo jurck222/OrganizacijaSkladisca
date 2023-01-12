@@ -13,6 +13,6 @@ Najina ideja za project je aplikacija za vodenje skladišča v proizvodnji. Apli
 ![podatkovna baza](web/wwwroot/img/image.png)
 
 **Jure Pavlovič naloge:**
-Generiranje osnovnega ogordja aplikacije in osnovne baze, ki je bila kasneje izboljšana. Objava aplikacije v azure in vključitev swagger. Dodajanje rolov in urejanje pravic ter dbinitializer.
+Generiranje osnovnega ogordja aplikacije in osnovne baze, ki je bila kasneje izboljšana. Objava aplikacije v azure in vključitev swagger. Dodajanje rolov in urejanje pravic ter dbinitializer.</br>
 **Maja Lindič naloge:**
 Zasnova podatkovne baze ter njena nadgradnja. Izvedba funkcionalnosti registracije ter avtorizacije. Urejanje izgleda spletne strani ter povezljivosti v ozadju, dodajanje funkcije search.
