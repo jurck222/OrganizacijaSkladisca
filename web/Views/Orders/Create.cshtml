@@ -34,7 +34,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="WhouseZone" class="control-label">Warehouse Zone</label>
-                <input asp-for="WhouseZone" class="form-control" />
+                @Html.DropDownListFor(model  => model.WhouseZone, new SelectList(Enum.GetValues(typeof(Zone))))
                 <span asp-validation-for="WhouseZone" class="text-danger"></span>
             </div>
             <div class="form-group">
