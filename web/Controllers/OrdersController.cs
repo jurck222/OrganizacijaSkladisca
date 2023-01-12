@@ -20,11 +20,23 @@ namespace web.Controllers
         }
 
         // GET: Orders
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-              return _context.Orders != null ? 
-                          View(await _context.Orders.ToListAsync()) :
-                          Problem("Entity set 'WarehouseContext.Orders'  is null.");
+            if (_context.Orders == null)
+            {
+                return Problem("Entity set 'WarehouseContext.Order'  is null.");
+
+            }
+
+            var orders = from w in _context.Orders
+                        select w;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                orders = orders.Where(s => s.OrderCode!.Contains(searchString));
+            }
+
+            return View(await orders.ToListAsync());
         }
 
         // GET: Orders/Details/5
